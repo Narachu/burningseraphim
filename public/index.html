@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Seraphim Burner</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    // Load the saved theme before the page draws, so it doesn't flash
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
 </head>
 <body>
 <div class="wrapper">
@@ -95,5 +99,24 @@
 
   <div class="credit">layout by <a href="https://teppyslayouts.neocities.org/">teppy</a></div>
 </div>
+
+<!-- Theme buttons (bottom-left) -->
+<div class="theme-switch">
+  <button class="ember" data-set-theme="ember">ember</button>
+  <button class="moss" data-set-theme="moss">moss</button>
+</div>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var buttons = document.querySelectorAll('[data-set-theme]');
+    function apply(name) {
+      root.dataset.theme = name;
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.setTheme === name); });
+      try { localStorage.setItem('theme', name); } catch (e) {}
+    }
+    buttons.forEach(function (b) { b.addEventListener('click', function () { apply(b.dataset.setTheme); }); });
+    apply(root.dataset.theme || 'ember');
+  })();
+</script>
 </body>
 </html>
