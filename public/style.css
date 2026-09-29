@@ -65,7 +65,7 @@ hr { border: none; height: 1px; background: #c2c89a; margin: 24px 0; display: bl
 }
 .content {
   padding: 12px 24px; flex-grow: 1; max-width: 660px; margin: 1rem;
-  background: #fc0000; color: #FFFFFF; border: 1px solid #6893a4; border-radius: 3px; min-height: 900px;
+  background: #bf2a2a; color: #FFFFFF; border: 1px solid #6893a4; border-radius: 3px; min-height: 900px;
 }
 .content img { max-width: 100%; }
 .content img + img { margin-top: 6px; }
