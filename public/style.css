@@ -1,0 +1,100 @@
+/* Layout by Teppy — https://teppyslayouts.neocities.org/ */
+
+body {
+  font-family: Calibri, sans-serif;
+  font-size: 12px;
+  line-height: 1.2rem;
+  background: #364974;
+  color: #222548;
+}
+
+h1, h2, h3, h4 { font-size: 14px; letter-spacing: 1px; }
+h1 { border-bottom: 2px dotted #6893a4; }
+h2 { border-bottom: 2px dotted #90b291; margin-top: 2rem; }
+hr { border: none; height: 1px; background: #c2c89a; margin: 24px 0; display: block; }
+
+.wrapper { width: 889px; margin: auto; }
+
+/* ---------- header / window ---------- */
+.header { position: relative; width: 889px; height: 165px; }
+.character { z-index: 10; position: absolute; right: -14px; top: -3px; pointer-events: none; }
+.window-frame {
+  background-image: url('img/window-frame.png');
+  background-size: contain; background-repeat: no-repeat;
+  width: 889px; height: 165px; position: absolute; top: 0; left: 0;
+  z-index: 1; pointer-events: none;
+}
+.window-left {
+  background-image: url('img/window-left.png');
+  background-size: contain; background-repeat: no-repeat;
+  width: 444px; height: 147px; position: absolute; top: 0; left: 0;
+}
+.window-right {
+  background-image: url('img/window-right.png');
+  background-size: contain; background-repeat: no-repeat;
+  width: 444px; height: 147px; position: absolute; top: 0; right: 0;
+}
+.outside {
+  background-image: url('img/window-background.png');
+  background-repeat: no-repeat;
+  position: absolute; z-index: -5; top: 10px; left: 10px; right: 10px; bottom: 10px;
+}
+
+.site-title { letter-spacing: 2px; margin-top: 48px; font-size: 12px; font-weight: bold; }
+.site-title a { color: #90b291; text-decoration: none; }
+.site-subtitle { font-size: 9px; height: 22px; margin-top: -4px; color: #6893a4; letter-spacing: 1px; }
+
+/* ---------- menu ---------- */
+.menu { text-transform: lowercase; margin-top: 24px; margin-left: 6px; z-index: 5; position: relative; }
+.menu ul { margin: 0; padding: 0; }
+.menu li { display: inline-block; margin-right: 4px; position: relative; }
+.menu a {
+  text-decoration: none; color: #DBE1B6;
+  width: 128px; height: 39px; line-height: 45px; text-align: center;
+  display: inline-block; letter-spacing: 1px;
+  background-image: url('img/button-inactive.png');
+}
+.menu a.active { color: #2B345B; background-image: url('img/button-active.png'); }
+.menu a:hover { text-decoration: underline; }
+
+/* ---------- main ---------- */
+.main {
+  display: flex; box-sizing: border-box; z-index: 2; position: relative;
+  background-image: url('img/main-tile.png'); background-color: #90b291;
+  margin-top: 1px;
+}
+.main::before {
+  display: block; content: " ";
+  background-image: url('img/main-top.png');
+  height: 3px; width: 100%; position: absolute; margin-top: -3px;
+}
+.content {
+  padding: 12px 24px; flex-grow: 1; max-width: 660px; margin: 1rem;
+  background: #c2c89a; border: 1px solid #6893a4; border-radius: 3px; min-height: 900px;
+}
+.content img { max-width: 100%; }
+.content img + img { margin-top: 6px; }
+.content a { color: #346d84; }
+
+.sidebar { padding: 12px; font-size: 11px; min-width: 150px; width: 150px; min-height: 640px; padding-left: 0; }
+.sidebar a { color: inherit; text-decoration: none; }
+.sidebar a:hover { text-decoration: underline; }
+ul.checklist { padding: 0 1rem; margin: 0; margin-bottom: 2rem; }
+
+code, pre { background: #dbe1b6; padding: 2px 4px; border-radius: 4px; }
+pre { white-space: break-spaces; }
+
+th { background: #90b291; }
+th, td { padding: 3px 6px; border: 1px solid #364974; vertical-align: top; }
+table.border-0 th, table.border-0 td { border: 0; }
+.border { border: 1px solid #6893a4; }
+.width-50 { width: 50%; }
+
+.credit { text-align: center; font-size: 10px; margin: 12px 0 24px; }
+.credit a { color: #90b291; }
+
+html, body { scrollbar-width: thin; scrollbar-color: #6fa3a9 #2c3e50; }
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: #2c3e50; border-radius: 10px; }
+::-webkit-scrollbar-thumb { background-color: #6fa3a9; border-radius: 10px; border: 3px solid #2c3e50; }
+::-webkit-scrollbar-thumb:hover { background-color: #d9e2c6; }
