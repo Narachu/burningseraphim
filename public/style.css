@@ -481,3 +481,4 @@ html { background: var(--bg-img, none) center / cover no-repeat fixed, var(--pag
 :root { --bg-img: url('images/backgrounds/background1-ember.jpg'); }
 :root[data-theme="moss"] { --bg-img: url('images/backgrounds/background1-moss.jpg'); }
 .site-title { margin-bottom: 38px; }
+:root[data-theme="moss"] .content { border-color: transparent; }
