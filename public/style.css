@@ -468,3 +468,9 @@ html, body { scrollbar-width: thin; scrollbar-color: var(--scroll-thumb) var(--s
   .layout .side-right { order: 3; }
   .layout .wrapper { order: 1; }
 }
+
+.win-body.rows .row { padding: 3px 0; border-bottom: 1px dotted var(--rule); }
+.win-body.rows .row:last-child { border-bottom: 0; }
+.win-body.rows .row b { display: block; font-size: 10px; letter-spacing: 1px; text-transform: lowercase; }
+.np-artist { color: var(--muted); margin: -4px 0 6px; }
+.np-state { font-size: 10px; color: var(--label); }
