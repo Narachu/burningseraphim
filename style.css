@@ -35,7 +35,7 @@
 
 :root[data-theme="moss"] {
   --page-bg:       linear-gradient(180deg, #56703a 0%, #8fab62 100%);
-  --main-bg:       #cddcaa;
+  --main-bg:       #eef3df;
   --content-bg:    #eef3df;
   --content-border:#a9bf83;
   --box-bg:        #dde8c2;
@@ -95,22 +95,13 @@ a:hover { color: var(--link-hover); }
   align-items: start;
 }
 .layout .wrapper { margin: 0; }
-.side { display: flex; flex-direction: column; gap: 22px; padding-top: 313px; }
+.side { display: flex; flex-direction: column; gap: 22px; padding-top: 323px; }
 
 .header {
+  --m: 30px; --c: 45px; --ci: 42px; --o: 15px; --mx: -200px; --my: -300px;
   position: relative; width: 889px; height: 165px; box-sizing: border-box;
   border: 2px solid var(--win-edge); border-radius: 8px;
   box-shadow: 4px 4px 0 var(--win-shadow);
-}
-.header::after {
-  content: ""; position: absolute; inset: -16px; z-index: 2; pointer-events: none;
-  border-radius: 22px;
-  background:
-    url('images/accessories/moss-top.png')    -200px 0   / auto 30px repeat-x,
-    url('images/accessories/moss-bottom.png') -500px 100% / auto 30px repeat-x,
-    url('images/accessories/moss-left.png')   0 -300px   / 30px auto repeat-y,
-    url('images/accessories/moss-right.png')  100% -700px / 30px auto repeat-y;
-  filter: var(--moss-filter);
 }
 .banner {
   position: absolute; inset: 0; border-radius: 6px;
@@ -118,39 +109,17 @@ a:hover { color: var(--link-hover); }
   filter: var(--banner-filter);
 }
 
-.site-title { letter-spacing: 2px; margin-top: 48px; font-size: 13px; font-weight: bold; }
+.site-title { letter-spacing: 2px; margin-top: 18px; font-size: 13px; font-weight: bold; }
 .site-title a { color: var(--title); text-decoration: none; }
-.site-subtitle { font-size: 9px; height: 22px; margin-top: -4px; color: var(--subtitle); letter-spacing: 1px; }
+.site-subtitle { font-size: 9px; height: 22px; margin-bottom: 20px; margin-top: -4px; color: var(--subtitle); letter-spacing: 1px; }
 
-.menu { text-transform: lowercase; margin-top: 24px; margin-left: 6px; z-index: 5; position: relative; }
-.menu ul { margin: 0; padding: 0; }
-.menu li { display: inline-block; margin-right: 4px; position: relative; }
-.menu li::before {
-  content: ""; position: absolute; z-index: 2; left: -3px; right: -3px; top: -9px; height: 22px;
-  background: url('images/accessories/moss-top.png') 0 0 / auto 22px repeat-x;
-  -webkit-mask: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
-  mask: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
-  filter: var(--moss-filter); pointer-events: none;
-}
-.menu li::after {
-  content: ""; position: absolute; z-index: 2; left: -6px; right: 2px; top: 2px; bottom: 0;
-  background:
-    url('images/accessories/moss-left.png')  0 0 / 14px auto repeat-y,
-    url('images/accessories/moss-right.png') 100% -400px / 14px auto repeat-y;
-  -webkit-mask: linear-gradient(to bottom, #000 55%, transparent);
-  mask: linear-gradient(to bottom, #000 55%, transparent);
-  filter: var(--moss-filter); pointer-events: none;
-}
-.menu li:nth-child(2)::after { background-position: 0 -250px, 100% -650px; }
-.menu li:nth-child(3)::after { background-position: 0 -500px, 100% -900px; }
-.menu li:nth-child(4)::after { background-position: 0 -750px, 100% -150px; }
-.menu li:nth-child(2)::before { background-position: -310px 0; }
-.menu li:nth-child(3)::before { background-position: -620px 0; }
-.menu li:nth-child(4)::before { background-position: -900px 0; }
+.menu { text-transform: lowercase; margin-top: 44px; margin-left: 0; z-index: 5; position: relative; }
+.menu ul { display: flex; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.menu li { position: relative; }
 .menu a {
-  text-decoration: none;
+  display: block; text-decoration: none;
   width: 128px; height: 39px; line-height: 42px; text-align: center;
-  display: inline-block; letter-spacing: 1px;
+  letter-spacing: 1px;
   background: var(--btn-bg); color: var(--btn-text);
   border-radius: 6px 6px 0 0;
 }
@@ -159,6 +128,7 @@ a:hover { color: var(--link-hover); }
 .menu a.active:hover { color: var(--btn-active-text); }
 
 .main {
+  --m: 64px; --c: 96px; --ci: 90px; --o: 32px;
   display: flex; box-sizing: border-box; z-index: 2; position: relative;
   background: var(--main-bg);
   border-radius: 0 6px 6px 6px;
@@ -177,23 +147,6 @@ a:hover { color: var(--link-hover); }
 .sidebar b { color: var(--label); }
 ul.checklist { padding: 0 1rem; margin: 0; margin-bottom: 2rem; }
 
-.moss-frame {
-  position: absolute; inset: -32px; z-index: 3; pointer-events: none;
-  border-radius: 48px;
-  -webkit-mask:
-    linear-gradient(#000, #000) 0 0 / 100% 100% no-repeat,
-    linear-gradient(to right, transparent, #000 22px, #000 calc(100% - 34px), transparent) 30px 0 / 560px 70px no-repeat;
-  -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#000, #000) 0 0 / 100% 100% no-repeat exclude,
-    linear-gradient(to right, transparent, #000 22px, #000 calc(100% - 34px), transparent) 30px 0 / 560px 70px no-repeat;
-  background:
-    url('images/accessories/moss-top.png')    top left    / auto 64px repeat-x,
-    url('images/accessories/moss-bottom.png') bottom left / auto 64px repeat-x,
-    url('images/accessories/moss-left.png')   top left    / 64px auto repeat-y,
-    url('images/accessories/moss-right.png')  top right   / 64px auto repeat-y;
-  filter: var(--moss-filter);
-}
 
 .box {
   background: var(--box-bg);
@@ -223,7 +176,7 @@ th { background: var(--box-bg); }
 th, td { padding: 3px 6px; border: 1px solid var(--content-border); vertical-align: top; }
 table.border-0 th, table.border-0 td { border: 0; }
 
-.credit { text-align: center; font-size: 10px; margin: 12px 0 24px; color: var(--btn-text); }
+.credit { text-align: center; font-size: 10px; margin: 44px 0 24px; color: var(--btn-text); }
 .credit a { color: inherit; }
 
 .theme-switch { position: fixed; left: 12px; bottom: 12px; display: flex; gap: 6px; z-index: 100; }
@@ -243,13 +196,14 @@ html, body { scrollbar-width: thin; scrollbar-color: var(--scroll-thumb) var(--s
 ::-webkit-scrollbar-thumb { background-color: var(--scroll-thumb); border-radius: 10px; border: 3px solid var(--scroll-track); }
 
 .win {
+  position: relative;
+  --m: 20px; --c: 30px; --ci: 28px; --o: 10px;
   background: var(--win-frame);
   border: 2px solid var(--win-edge);
   border-radius: 4px;
   padding: 5px;
   box-shadow: 4px 4px 0 var(--win-shadow);
 }
-.win { position: relative; }
 .win::after {
   content: ""; position: absolute; inset: -11px; z-index: 2; pointer-events: none;
   border-radius: 14px;
@@ -266,6 +220,103 @@ html, body { scrollbar-width: thin; scrollbar-color: var(--scroll-thumb) var(--s
 .side-right .win:nth-child(2) { --mx: -570px; --my: -630px; }
 .side-right .win:nth-child(3) { --mx: -950px; --my: -1000px; }
 .win.closed { display: none; }
+
+.moss-frame, .header::after, .win::after {
+  content: ""; position: absolute; inset: calc(-1 * var(--o)); z-index: 3; pointer-events: none;
+  background:
+    url('images/accessories/moss-top.png')    var(--mx, 0) 0    / auto var(--m) repeat-x,
+    url('images/accessories/moss-bottom.png') var(--mx, 0) 100% / auto var(--m) repeat-x,
+    url('images/accessories/moss-left.png')   0 var(--my, 0)    / var(--m) auto repeat-y,
+    url('images/accessories/moss-right.png')  100% var(--my, 0) / var(--m) auto repeat-y;
+  -webkit-mask-image: linear-gradient(#000, #000), linear-gradient(#000, #000);
+  -webkit-mask-position: var(--ci) 0, 0 var(--ci);
+  -webkit-mask-size: calc(100% - 2 * var(--ci)) 100%, 100% calc(100% - 2 * var(--ci));
+  -webkit-mask-repeat: no-repeat;
+  mask-image: linear-gradient(#000, #000), linear-gradient(#000, #000);
+  mask-position: var(--ci) 0, 0 var(--ci);
+  mask-size: calc(100% - 2 * var(--ci)) 100%, 100% calc(100% - 2 * var(--ci));
+  mask-repeat: no-repeat;
+  filter: var(--moss-filter);
+}
+.main::after, .header::before, .win::before {
+  content: ""; position: absolute; inset: calc(-1 * var(--o)); z-index: 3; pointer-events: none;
+  background:
+    url('images/accessories/moss-corner-tl.png') 0 0       / var(--c) var(--c) no-repeat,
+    url('images/accessories/moss-corner-tr.png') 100% 0    / var(--c) var(--c) no-repeat,
+    url('images/accessories/moss-corner-bl.png') 0 100%    / var(--c) var(--c) no-repeat,
+    url('images/accessories/moss-corner-br.png') 100% 100% / var(--c) var(--c) no-repeat;
+  filter: var(--moss-filter);
+}
+
+.moss-frame {
+  --j: 546px;
+  -webkit-mask-image:
+    url('images/accessories/moss-fade-x.png'), linear-gradient(#000, #000),
+    linear-gradient(#000, #000), linear-gradient(#000, #000);
+  -webkit-mask-position:
+    var(--j) 0, calc(var(--j) + 60px) 0,
+    100% var(--ci), var(--ci) 100%;
+  -webkit-mask-size:
+    60px var(--m), calc(100% - var(--j) - 60px - var(--ci)) var(--m),
+    var(--m) calc(100% - 2 * var(--ci)), calc(100% - 2 * var(--ci)) var(--m);
+  -webkit-mask-repeat: no-repeat;
+  mask-image:
+    url('images/accessories/moss-fade-x.png'), linear-gradient(#000, #000),
+    linear-gradient(#000, #000), linear-gradient(#000, #000);
+  mask-position:
+    var(--j) 0, calc(var(--j) + 60px) 0,
+    100% var(--ci), var(--ci) 100%;
+  mask-size:
+    60px var(--m), calc(100% - var(--j) - 60px - var(--ci)) var(--m),
+    var(--m) calc(100% - 2 * var(--ci)), calc(100% - 2 * var(--ci)) var(--m);
+  mask-repeat: no-repeat;
+}
+.main::before {
+  content: ""; position: absolute; inset: calc(-1 * var(--o)); z-index: 3; pointer-events: none;
+  background: url('images/accessories/moss-left.png') 0 0 / var(--m) auto repeat-y;
+  -webkit-mask-image: url('images/accessories/moss-fade.png'), linear-gradient(#000, #000);
+  -webkit-mask-position: 0 0, 0 30px;
+  -webkit-mask-size: var(--m) 34px, var(--m) calc(100% - 30px - var(--ci));
+  -webkit-mask-repeat: no-repeat;
+  mask-image: url('images/accessories/moss-fade.png'), linear-gradient(#000, #000);
+  mask-position: 0 0, 0 30px;
+  mask-size: var(--m) 34px, var(--m) calc(100% - 30px - var(--ci));
+  mask-repeat: no-repeat;
+  filter: var(--moss-filter);
+}
+.main::after {
+  background:
+    url('images/accessories/moss-corner-tr.png') 100% 0    / var(--c) var(--c) no-repeat,
+    url('images/accessories/moss-corner-bl.png') 0 100%    / var(--c) var(--c) no-repeat,
+    url('images/accessories/moss-corner-br.png') 100% 100% / var(--c) var(--c) no-repeat;
+}
+
+.menu li::before, .menu li::after {
+  content: ""; position: absolute; z-index: 2; left: -10px; right: -10px; top: -10px; bottom: 0; pointer-events: none;
+  filter: var(--moss-filter);
+}
+.menu li::before {
+  background:
+    url('images/accessories/moss-top.png')   var(--tx, 0) 0 / auto 20px repeat-x,
+    url('images/accessories/moss-left.png')  0 var(--ty, 0) / 20px auto repeat-y,
+    url('images/accessories/moss-right.png') 100% var(--ty, 0) / 20px auto repeat-y;
+  -webkit-mask-image: linear-gradient(#000, #000), linear-gradient(#000, #000);
+  -webkit-mask-position: 27px 0, 0 27px;
+  -webkit-mask-size: calc(100% - 54px) 100%, 100% calc(100% - 27px);
+  -webkit-mask-repeat: no-repeat;
+  mask-image: linear-gradient(#000, #000), linear-gradient(#000, #000);
+  mask-position: 27px 0, 0 27px;
+  mask-size: calc(100% - 54px) 100%, 100% calc(100% - 27px);
+  mask-repeat: no-repeat;
+}
+.menu li::after {
+  background:
+    url('images/accessories/moss-corner-tl.png') 0 0    / 30px 30px no-repeat,
+    url('images/accessories/moss-corner-tr.png') 100% 0 / 30px 30px no-repeat;
+}
+.menu li:nth-child(2) { --tx: -310px; --ty: -300px; }
+.menu li:nth-child(3) { --tx: -620px; --ty: -600px; }
+.menu li:nth-child(4) { --tx: -900px; --ty: -900px; }
 .win-bar {
   display: flex; align-items: center; justify-content: space-between; gap: 6px;
   background: var(--bar-bg); color: var(--bar-text);
@@ -351,14 +402,18 @@ html, body { scrollbar-width: thin; scrollbar-color: var(--scroll-thumb) var(--s
 .track-title { font-weight: bold; letter-spacing: 1px; margin-bottom: 5px; }
 .track-time { flex: none; font-variant-numeric: tabular-nums; min-width: 70px; text-align: right; }
 
-.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.gallery { columns: 3 190px; column-gap: 18px; padding: 6px 4px; }
 .thumb {
-  padding: 0; border: 2px solid var(--content-border); border-radius: 3px;
-  background: var(--box-bg); cursor: zoom-in; aspect-ratio: 1; overflow: hidden;
+  display: block; width: 100%; margin: 0 0 18px; break-inside: avoid;
+  padding: 6px 6px 16px; cursor: zoom-in;
+  background: var(--box-bg); border: 1px solid var(--content-border); border-radius: 2px;
+  box-shadow: 3px 3px 0 var(--win-shadow);
+  transform: rotate(var(--r, 0deg)); transition: transform .2s;
 }
-.thumb img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .2s; }
-.thumb:hover { border-color: var(--box-accent); }
-.thumb:hover img { transform: scale(1.05); }
+.thumb img { display: block; width: 100%; height: auto; }
+.thumb:nth-child(odd) { width: 94%; margin-left: 6%; }
+.thumb:nth-child(3n) { width: 88%; margin-left: 2%; }
+.thumb:hover { transform: rotate(0deg) scale(1.04); position: relative; z-index: 2; border-color: var(--box-accent); }
 .content .thumb img + img { margin-top: 0; }
 
 .lightbox {
