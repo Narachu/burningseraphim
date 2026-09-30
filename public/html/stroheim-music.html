@@ -1,167 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Stroheim Music</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            background-color: #242424;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .container {
-            border: 4px solid #000;
-            padding: 15px;
-            background-color: #cf7b7b;
-        }
-
-        .title {
-            border: 2px solid #000;
-            text-align: center;
-            padding: 50px 10px;
-            font-size: 64px;
-            font-weight: bold;
-            margin-bottom: 0px;
-            background-color: #cf7b7b;
-        }
-
-        .columns {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            gap: 20px;
-        }
-
-        .column {
-            flex: 1;
-            border: 2px solid #000;
-            display: flex;
-            flex-direction: column;
-            background-color: #d69a9a;
-            min-height: 520px;
-        }
-
-        .column-header {
-            border-bottom: 2px solid #000;
-            text-align: center;
-            padding: 20px 10px;
-            font-size: 20px;
-            font-weight: 500;
-        }
-
-        .column-content {
-            flex: 1;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        /* Coming Soon Box */
-        .coming-soon {
-            border: 2px solid #000;
-            background-color: #ffffff;
-            padding: 30px 60px;
-            font-size: 36px;
-            font-weight: 500;
-        }
-
-        .bonfire-image {
-         width: 280px;
-         height: 300px;
-          object-fit: cover;
-          border: 2px solid #000;
-        }
-        
-        .me-image {
-         width: 280px;
-         height: 300px;
-          object-fit: cover;
-          border: 2px solid #000;
-        }
-        
-        .server-info {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-
-        /* Survey list styling */
-        .survey-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: 27px;
-        }
-
-        .survey-list li {
-            margin: 20px 0;
-            color: white;
-            font-size: 70px;
-        }
-        .footer-link {
-             text-align: center;
-               margin-top: 30px;
-        }
-
-        .footer-link a {
-           color: white;
-          font-size: 30px;
-          text-decoration: none;
-}
-
-        .footer-link a:hover {
-            text-decoration: underline;
-}
-
-        @media (max-width: 900px) {
-            .columns {
-                flex-direction: column;
-            }
-        }
-        
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stroheim Music</title>
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
 </head>
-    <body>
-    <div class="container">
-        <div class="inner-container">
-            <div class="title">
-                [ Beats of shit and doom ]
-            </div>
-            <div class="columns" style="margin-top: 20px;">
-                <div class="column-content">
-                <audio controls>
-                    <source src="../audio/first beat.mp3" type="audio/mpeg">
-                </audio>
-                    <br>
-                <audio controls>
-                    <source src="../audio/Shit Slop Beat.mp3" type="audio/mpeg">
-                </audio>
-                    <br>
-                <audio controls>
-                    <source src="../audio/Tritater Is a Dork.mp3" type="audio/mpeg">
-                </audio>
-                    <br>
-                <audio controls>
-                    <source src="../audio/alien shit.mp3" type="audio/mpeg">
-                </audio>
-                    <br>
-                <audio controls>
-                    <source src="../audio/minecraft ass beat.mp3" type="audio/mpeg">
-                </audio>
-                    <br>
-                <audio controls>
-                    <source src="../audio/beat 5 + Todd.mp3" type="audio/mpeg">
-                </audio>
-                </div>
-            </div>
-        </div>
+<body data-root="../">
+<div class="wrapper">
+
+  <div class="header">
+    <div class="banner"></div>
+  </div>
+
+  <div class="site-title"><a href="../index.html">burning seraphim</a></div>
+  <div class="site-subtitle">welcom to da website</div>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="stroheim-music.html" class="active">Music</a></li>
+      <li><a href="photo_album.html">Photos</a></li>
+    </ul>
+  </nav>
+
+  <div class="main">
+    <div class="moss-frame"></div>
+    <div class="content wide">
+      <h1>Beats of shit and doom</h1>
+      <p>Click a track to play it. It moves on to the next one when it ends.</p>
+      <div class="tracks" id="track-list"></div>
     </div>
+  </div>
+
+  <div class="credit">layout by <a href="https://teppyslayouts.neocities.org/">teppy</a></div>
+</div>
+
+<div class="theme-switch">
+  <button class="ember" data-set-theme="ember">ember</button>
+  <button class="moss" data-set-theme="moss">moss</button>
+</div>
+<script src="../site.js"></script>
 </body>
 </html>

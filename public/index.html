@@ -6,20 +6,44 @@
   <title>Seraphim Burner</title>
   <link rel="stylesheet" href="style.css">
   <script>
-    // Load the saved theme before the page draws, so it doesn't flash
     try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
   </script>
 </head>
-<body>
+<body data-root="">
+<div class="layout">
+  <aside class="side side-left">
+    <div class="win">
+      <div class="win-bar"><span>about</span></div>
+      <div class="win-body about">
+        <img src="images/library/thumbs/library17.jpg" alt="me">
+        <div>
+          <b>site</b> : burning seraphim<br>
+          <b>owner</b> : narachu<br>
+          <b>since</b> : march 2026<br>
+          <b>playing</b> : minecraft
+        </div>
+      </div>
+    </div>
+
+    <div class="win">
+      <div class="win-bar"><span>contact</span></div>
+      <div class="win-body">
+        <p><b>mail</b> : <a href="mailto:infertism@gmail.com">infertism@gmail.com</a></p>
+        <p><b>ideas</b> : <a href="https://docs.google.com/forms/d/e/1FAIpQLSfDfeFA3iNQpAympztQSy9yNuB8xskLRXW0VK14LwaS8vJaUA/viewform?usp=dialog">ideaslop form</a></p>
+        <p><b>minecraft</b> : 209.102.248.131:9165</p>
+      </div>
+    </div>
+
+    <div class="win">
+      <div class="win-bar"><span>random photo</span></div>
+      <div class="win-body" id="random-photo"></div>
+    </div>
+  </aside>
+
 <div class="wrapper">
 
-  <!-- ===== HEADER ===== -->
   <div class="header">
-    <div class="outside"></div>
-    <div class="window-left"></div>
-    <div class="window-right"></div>
-    <div class="window-frame"></div>
-    <img class="character" src="img/boy.png" alt="">
+    <div class="banner"></div>
   </div>
 
   <div class="site-title"><a href="index.html">burning seraphim</a></div>
@@ -34,13 +58,11 @@
     </ul>
   </nav>
 
-  <!-- ===== MAIN ===== -->
   <div class="main">
     <div class="moss-frame"></div>
     <div class="content">
       <div class="box">
         <h3>Daily Log</h3>
-        <!-- Copy a log-entry block for each new entry (newest on top) -->
         <div class="log-list">
           <div class="log-entry">
             <span class="stamp">[ <span class="date">Sep 30th, 2026</span> | <span class="time">9:37 AM</span> ]</span>
@@ -102,7 +124,6 @@
       or input it here: <a href="https://docs.google.com/forms/d/e/1FAIpQLSfDfeFA3iNQpAympztQSy9yNuB8xskLRXW0VK14LwaS8vJaUA/viewform?usp=dialog">Ideaslop (win $)</a></p>
     </div>
 
-    <!-- ===== SIDEBAR ===== -->
     <div class="sidebar">
       <h3>Updates</h3>
       <p><b>2026-09-29</b><br>Moved the site to Neocities</p>
@@ -127,23 +148,34 @@
   <div class="credit">layout by <a href="https://teppyslayouts.neocities.org/">teppy</a></div>
 </div>
 
-<!-- Theme buttons (bottom-left) -->
+  <aside class="side side-right">
+    <div class="win">
+      <div class="win-bar"><span>now playing</span></div>
+      <div class="win-body" id="mini-player"></div>
+    </div>
+
+    <div class="win">
+      <div class="win-bar"><span>link back</span></div>
+      <div class="win-body linkback">
+        <img src="images/icons/burningseraphim_button.png" width="88" height="31" alt="burning seraphim">
+        <textarea id="linkback-code" readonly><a href="https://narachu.neocities.org/"><img src="https://narachu.neocities.org/images/icons/burningseraphim_button.png" alt="burning seraphim"></a></textarea>
+        <button type="button" class="copy-btn" data-copy="linkback-code">copy code</button>
+      </div>
+    </div>
+
+    <div class="win">
+      <div class="win-bar"><span>webrings &amp; cliques</span></div>
+      <div class="win-body">
+        <p>nothing here yet</p>
+      </div>
+    </div>
+  </aside>
+</div>
+
 <div class="theme-switch">
   <button class="ember" data-set-theme="ember">ember</button>
   <button class="moss" data-set-theme="moss">moss</button>
 </div>
-<script>
-  (function () {
-    var root = document.documentElement;
-    var buttons = document.querySelectorAll('[data-set-theme]');
-    function apply(name) {
-      root.dataset.theme = name;
-      buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.setTheme === name); });
-      try { localStorage.setItem('theme', name); } catch (e) {}
-    }
-    buttons.forEach(function (b) { b.addEventListener('click', function () { apply(b.dataset.setTheme); }); });
-    apply(root.dataset.theme || 'ember');
-  })();
-</script>
+<script src="site.js"></script>
 </body>
 </html>

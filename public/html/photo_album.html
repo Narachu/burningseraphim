@@ -1,141 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Photo Album</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            background-color: #242424;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .container {
-            border: 4px solid #000;
-            padding: 15px;
-            background-color: #cf7b7b;
-        }
-
-        .title {
-            border: 2px solid #000;
-            text-align: center;
-            padding: 50px 10px;
-            font-size: 64px;
-            font-weight: bold;
-            margin-bottom: 0px;
-            background-color: #cf7b7b;
-        }
-
-        .columns {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            gap: 20px;
-        }
-
-        .column {
-            flex: 1;
-            border: 2px solid #000;
-            display: flex;
-            flex-direction: column;
-            background-color: #d69a9a;
-            min-height: 520px;
-        }
-
-        .column-header {
-            border-bottom: 2px solid #000;
-            text-align: center;
-            padding: 20px 10px;
-            font-size: 20px;
-            font-weight: 500;
-        }
-
-        .column-content {
-            flex: 1;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        /* Coming Soon Box */
-        .coming-soon {
-            border: 2px solid #000;
-            background-color: #ffffff;
-            padding: 30px 60px;
-            font-size: 36px;
-            font-weight: 500;
-        }
-
-        .imagel {
-          border: 2px solid #000;
-            width: 23%;
-            height: 400px;
-            object-fit: cover;
-        }
-        .imager {   
-          border: 2px solid #000;
-            width: 23%;
-            height: 400px;
-            object-fit: cover;
-        }
-        
-        .server-info {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-
-        /* Survey list styling */
-        .survey-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: 27px;
-        }
-
-        .survey-list li {
-            margin: 20px 0;
-            color: white;
-            font-size: 70px;
-        }
-        .footer-link {
-             text-align: center;
-               margin-top: 30px;
-        }
-
-        .footer-link a {
-           color: white;
-          font-size: 30px;
-          text-decoration: none;
-}
-
-        .footer-link a:hover {
-            text-decoration: underline;
-}
-
-        @media (max-width: 900px) {
-            .columns {
-                flex-direction: column;
-            }
-        }
-        
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photo Album</title>
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
 </head>
-<body>
-    <div class="container">
-        <div class="inner-container">
-            <img src="../images/library/library2.png" alt="Bonfire" class="imagel"> <img src="../images/library/library19.png" alt="Bonfire" class="imagel"> <img src="../images/library/library1.png" alt="Bonfire" class="imager"> <img src="../images/library/library13.png" alt="Bonfire" class="imager">
-            <img src="../images/library/library4.jpg" alt="Bonfire" class="imagel"> <img src="../images/library/library20.png" alt="Bonfire" class="imagel"> <img src="../images/library/library5.jpg" alt="Bonfire" class="imager"> <img src="../images/icons/minecraft_bonfire_icon.jpg" alt="Bonfire" class="imager">
-            <img src="../images/library/library23.jpg" alt="Bonfire" class="imagel"> <img src="../images/library/library21.png" alt="Bonfire" class="imagel"> <img src="../images/icons/stroheim_music_icon.png" alt="Bonfire" class="imager"> <img src="../images/library/library7.png" alt="Bonfire" class="imager">
-            <img src="../images/library/library11.png" alt="Bonfire" class="imagel"> <img src="../images/library/library10.png" alt="Bonfire" class="imagel"> <img src="../images/library/library9.png" alt="Bonfire" class="imager"> <img src="../images/library/library8.png" alt="Bonfire" class="imager">
-            <img src="../images/library/library16.png" alt="Bonfire" class="imagel"> <img src="../images/library/library3.jpg" alt="Bonfire" class="imagel"> <img src="../images/library/library22.webp" alt="Bonfire" class="imager"> <img src="../images/library/library18.webp" alt="Bonfire" class="imager">
-        </div>
+<body data-root="../">
+<div class="wrapper">
+
+  <div class="header">
+    <div class="banner"></div>
+  </div>
+
+  <div class="site-title"><a href="../index.html">burning seraphim</a></div>
+  <div class="site-subtitle">welcom to da website</div>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="stroheim-music.html">Music</a></li>
+      <li><a href="photo_album.html" class="active">Photos</a></li>
+    </ul>
+  </nav>
+
+  <div class="main">
+    <div class="moss-frame"></div>
+    <div class="content wide">
+      <h1>Photo Album</h1>
+      <p>Click a photo to see it full size. Use the arrow keys to flip through.</p>
+      <div class="gallery" id="gallery"></div>
     </div>
+  </div>
+
+  <div class="credit">layout by <a href="https://teppyslayouts.neocities.org/">teppy</a></div>
+</div>
+
+<div class="theme-switch">
+  <button class="ember" data-set-theme="ember">ember</button>
+  <button class="moss" data-set-theme="moss">moss</button>
+</div>
+<script src="../site.js"></script>
 </body>
 </html>
