@@ -12,7 +12,8 @@ var PHOTOS = [
   "library6.webp", "library7.png", "library8.png", "library9.png", "library10.png",
   "library11.png", "library12.gif", "library13.png", "library15.png", 
   "library18.webp", "library20.png", "library21.png",
-  "library22.webp", "library23.jpg"
+  "library22.webp", "library23.jpg",
+  "library30.jpg", "library31.jpg", "library32.jpg", "library33.jpg", "library34.png", "library35.png", "library36.jpg", "library37.png", "library38.png", "library39.png", "library40.png", "library41.png", "library42.png", "library43.png", "library44.png", "library45.png", "library46.png", "library47.png", "library48.jpg", "library49.jpg", "library50.jpg", "library51.jpg", "library52.jpg"
 ];
 
 (function () {

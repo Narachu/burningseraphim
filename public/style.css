@@ -247,38 +247,38 @@ html, body { scrollbar-width: thin; scrollbar-color: var(--scroll-thumb) var(--s
 }
 
 .moss-frame {
-  --j: 612px;
+  --j: 568px;
   -webkit-mask-image:
-    url('images/accessories/moss-fade-x.png'), linear-gradient(#000, #000),
+    url('images/accessories/moss-taper-x.png'), linear-gradient(#000, #000),
     linear-gradient(#000, #000), linear-gradient(#000, #000);
   -webkit-mask-position:
-    var(--j) 0, calc(var(--j) + 80px) 0,
+    var(--j) 0, calc(var(--j) + 200px) 0,
     100% var(--ci), var(--ci) 100%;
   -webkit-mask-size:
-    80px var(--m), calc(100% - var(--j) - 80px - var(--ci)) var(--m),
+    200px var(--m), calc(100% - var(--j) - 200px - var(--ci)) var(--m),
     var(--m) calc(100% - 2 * var(--ci)), calc(100% - 2 * var(--ci)) var(--m);
   -webkit-mask-repeat: no-repeat;
   mask-image:
-    url('images/accessories/moss-fade-x.png'), linear-gradient(#000, #000),
+    url('images/accessories/moss-taper-x.png'), linear-gradient(#000, #000),
     linear-gradient(#000, #000), linear-gradient(#000, #000);
   mask-position:
-    var(--j) 0, calc(var(--j) + 80px) 0,
+    var(--j) 0, calc(var(--j) + 200px) 0,
     100% var(--ci), var(--ci) 100%;
   mask-size:
-    80px var(--m), calc(100% - var(--j) - 80px - var(--ci)) var(--m),
+    200px var(--m), calc(100% - var(--j) - 200px - var(--ci)) var(--m),
     var(--m) calc(100% - 2 * var(--ci)), calc(100% - 2 * var(--ci)) var(--m);
   mask-repeat: no-repeat;
 }
 .main::before {
   content: ""; position: absolute; inset: calc(-1 * var(--o)); z-index: 3; pointer-events: none;
   background: url('images/accessories/moss-left.png') 0 0 / var(--m) auto repeat-y;
-  -webkit-mask-image: url('images/accessories/moss-fade.png'), linear-gradient(#000, #000);
-  -webkit-mask-position: 0 62px, 0 138px;
-  -webkit-mask-size: var(--m) 80px, var(--m) calc(100% - 138px - var(--ci));
+  -webkit-mask-image: url('images/accessories/moss-taper-y.png'), linear-gradient(#000, #000);
+  -webkit-mask-position: 0 32px, 0 232px;
+  -webkit-mask-size: var(--m) 200px, var(--m) calc(100% - 232px - var(--ci));
   -webkit-mask-repeat: no-repeat;
-  mask-image: url('images/accessories/moss-fade.png'), linear-gradient(#000, #000);
-  mask-position: 0 62px, 0 138px;
-  mask-size: var(--m) 80px, var(--m) calc(100% - 138px - var(--ci));
+  mask-image: url('images/accessories/moss-taper-y.png'), linear-gradient(#000, #000);
+  mask-position: 0 32px, 0 232px;
+  mask-size: var(--m) 200px, var(--m) calc(100% - 232px - var(--ci));
   mask-repeat: no-repeat;
   filter: var(--moss-filter);
 }
