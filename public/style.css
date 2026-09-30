@@ -95,7 +95,7 @@ a:hover { color: var(--link-hover); }
   align-items: start;
 }
 .layout .wrapper { margin: 0; }
-.side { display: flex; flex-direction: column; gap: 22px; padding-top: 313px; }
+.side { display: flex; flex-direction: column; gap: 22px; padding-top: 323px; }
 
 .header {
   --m: 30px; --c: 45px; --ci: 42px; --o: 15px; --mx: -200px; --my: -300px;
@@ -109,11 +109,11 @@ a:hover { color: var(--link-hover); }
   filter: var(--banner-filter);
 }
 
-.site-title { letter-spacing: 2px; margin-top: 48px; font-size: 13px; font-weight: bold; }
+.site-title { letter-spacing: 2px; margin-top: 18px; font-size: 13px; font-weight: bold; }
 .site-title a { color: var(--title); text-decoration: none; }
-.site-subtitle { font-size: 9px; height: 22px; margin-top: -4px; color: var(--subtitle); letter-spacing: 1px; }
+.site-subtitle { font-size: 9px; height: 22px; margin-bottom: 20px; margin-top: -4px; color: var(--subtitle); letter-spacing: 1px; }
 
-.menu { text-transform: lowercase; margin-top: 24px; margin-left: 6px; z-index: 5; position: relative; }
+.menu { text-transform: lowercase; margin-top: 44px; margin-left: 6px; z-index: 5; position: relative; }
 .menu ul { margin: 0; padding: 0; }
 .menu li { display: inline-block; margin-right: 4px; position: relative; }
 .menu a {
@@ -249,30 +249,49 @@ html, body { scrollbar-width: thin; scrollbar-color: var(--scroll-thumb) var(--s
 }
 
 .moss-frame {
-  -webkit-mask-image: linear-gradient(#000, #000), linear-gradient(#000, #000), linear-gradient(#000, #000);
-  -webkit-mask-position: 38px 32px, var(--ci) 0, 0 var(--ci);
-  -webkit-mask-size: 532px 48px, calc(100% - 2 * var(--ci)) 100%, 100% calc(100% - 2 * var(--ci));
-  -webkit-mask-composite: xor, source-over, source-over;
-  mask-image: linear-gradient(#000, #000), linear-gradient(#000, #000), linear-gradient(#000, #000);
-  mask-position: 38px 32px, var(--ci) 0, 0 var(--ci);
-  mask-size: 532px 48px, calc(100% - 2 * var(--ci)) 100%, 100% calc(100% - 2 * var(--ci));
-  mask-composite: exclude, add, add;
+  --j: 590px;
+  -webkit-mask-image:
+    url('images/accessories/moss-fade-x.png'), linear-gradient(#000, #000),
+    url('images/accessories/moss-fade.png'), linear-gradient(#000, #000),
+    linear-gradient(#000, #000), linear-gradient(#000, #000);
+  -webkit-mask-position:
+    var(--j) 0, calc(var(--j) + 60px) 0,
+    0 28px, 0 76px,
+    100% var(--ci), var(--ci) 100%;
+  -webkit-mask-size:
+    60px var(--m), calc(100% - var(--j) - 60px - var(--ci)) var(--m),
+    var(--m) 48px, var(--m) calc(100% - 76px - var(--ci)),
+    var(--m) calc(100% - 2 * var(--ci)), calc(100% - 2 * var(--ci)) var(--m);
+  -webkit-mask-repeat: no-repeat;
+  mask-image:
+    url('images/accessories/moss-fade-x.png'), linear-gradient(#000, #000),
+    url('images/accessories/moss-fade.png'), linear-gradient(#000, #000),
+    linear-gradient(#000, #000), linear-gradient(#000, #000);
+  mask-position:
+    var(--j) 0, calc(var(--j) + 60px) 0,
+    0 28px, 0 76px,
+    100% var(--ci), var(--ci) 100%;
+  mask-size:
+    60px var(--m), calc(100% - var(--j) - 60px - var(--ci)) var(--m),
+    var(--m) 48px, var(--m) calc(100% - 76px - var(--ci)),
+    var(--m) calc(100% - 2 * var(--ci)), calc(100% - 2 * var(--ci)) var(--m);
+  mask-repeat: no-repeat;
 }
 .main::after {
-  -webkit-mask-image: linear-gradient(#000, #000), linear-gradient(#000, #000);
-  -webkit-mask-position: 38px 32px, 0 0;
-  -webkit-mask-size: 532px 48px, 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-composite: xor, source-over;
-  mask-image: linear-gradient(#000, #000), linear-gradient(#000, #000);
-  mask-position: 38px 32px, 0 0;
-  mask-size: 532px 48px, 100% 100%;
-  mask-repeat: no-repeat;
-  mask-composite: exclude, add;
+  background:
+    url('images/accessories/moss-corner-tr.png') 100% 0    / var(--c) var(--c) no-repeat,
+    url('images/accessories/moss-corner-bl.png') 0 100%    / var(--c) var(--c) no-repeat,
+    url('images/accessories/moss-corner-br.png') 100% 100% / var(--c) var(--c) no-repeat;
+}
+.menu::after {
+  content: ""; position: absolute; z-index: 3; pointer-events: none;
+  left: 524px; bottom: -32px; width: 96px; height: 96px;
+  background: url('images/accessories/moss-junction.png') 0 0 / 96px 96px no-repeat;
+  filter: var(--moss-filter);
 }
 
 .menu li::before, .menu li::after {
-  content: ""; position: absolute; z-index: -1; left: -10px; right: -10px; top: -10px; bottom: 0; pointer-events: none;
+  content: ""; position: absolute; z-index: 2; left: -10px; right: -10px; top: -10px; bottom: 0; pointer-events: none;
   filter: var(--moss-filter);
 }
 .menu li::before {
