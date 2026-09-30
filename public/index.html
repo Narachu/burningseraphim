@@ -6,12 +6,14 @@
   <title>Seraphim Burner</title>
   <link rel="stylesheet" href="style.css">
   <script>
+    // Load the saved theme before the page draws, so it doesn't flash
     try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
   </script>
 </head>
 <body>
 <div class="wrapper">
 
+  <!-- ===== HEADER ===== -->
   <div class="header">
     <div class="outside"></div>
     <div class="window-left"></div>
@@ -32,22 +34,13 @@
     </ul>
   </nav>
 
+  <!-- ===== MAIN ===== -->
   <div class="main">
+    <div class="moss-frame"></div>
     <div class="content">
       <div class="box">
         <h3>Daily Log</h3>
-        <div class="log-entry">
-          <span class="stamp">[ <span class="date">Sep 30th, 2026</span> | <span class="time">9:31 AM</span> ]</span>
-          <span class="msg">testing testing</span>
-        </div>
-        <div class="log-entry">
-          <span class="stamp">[ <span class="date">Sep 30th, 2026</span> | <span class="time">9:28 AM</span> ]</span>
-          <span class="msg">Hello world! I hope this works...</span>
-        </div>
-        <div class="log-entry">
-          <span class="stamp">[ <span class="date">Sep 30th, 2026</span> | <span class="time">9:27 AM</span> ]</span>
-          <span class="msg">Hello world! I hope this is all working fine...</span>
-        </div>
+        <!-- Copy a log-entry block for each new entry (newest on top) -->
         <div class="log-entry">
           <span class="stamp">[ <span class="date">Sep 29th, 2026</span> | <span class="time">2:34 PM</span> ]</span>
           <span class="msg">log here</span>
@@ -67,8 +60,8 @@
         <tr><td><b>IP</b></td><td>209.102.248.131:9165</td></tr>
       </table>
       <p>There's daily world backups, and every action is logged, griefing won't do much.</p>
+      <img src="images/icons/bonfire_icon.jpg" alt="Bonfire">
 
-      
       <h2>Random Surveys</h2>
       <ul>
         <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeed8zmQBOiDusQjmm6N0noQznXDBZWTVg-w5wr-mor0JGlIw/viewform?usp=dialog">Bald people survey</a></li>
@@ -83,6 +76,7 @@
       or input it here: <a href="https://docs.google.com/forms/d/e/1FAIpQLSfDfeFA3iNQpAympztQSy9yNuB8xskLRXW0VK14LwaS8vJaUA/viewform?usp=dialog">Ideaslop (win $)</a></p>
     </div>
 
+    <!-- ===== SIDEBAR ===== -->
     <div class="sidebar">
       <h3>Updates</h3>
       <p><b>2026-09-29</b><br>Moved the site to Neocities</p>
@@ -107,6 +101,7 @@
   <div class="credit">layout by <a href="https://teppyslayouts.neocities.org/">teppy</a></div>
 </div>
 
+<!-- Theme buttons (bottom-left) -->
 <div class="theme-switch">
   <button class="ember" data-set-theme="ember">ember</button>
   <button class="moss" data-set-theme="moss">moss</button>
