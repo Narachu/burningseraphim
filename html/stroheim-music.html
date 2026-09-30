@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stroheim Music</title>
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body data-root="../">
+<div class="wrapper">
+
+  <div class="header">
+    <div class="outside"></div>
+    <div class="window-left"></div>
+    <div class="window-right"></div>
+    <div class="window-frame"></div>
+    <img class="character" src="../img/boy.png" alt="">
+  </div>
+
+  <div class="site-title"><a href="../index.html">burning seraphim</a></div>
+  <div class="site-subtitle">welcom to da website</div>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="stroheim-music.html" class="active">Music</a></li>
+      <li><a href="photo_album.html">Photos</a></li>
+    </ul>
+  </nav>
+
+  <div class="main">
+    <div class="moss-frame"></div>
+    <div class="content wide">
+      <h1>Beats of shit and doom</h1>
+      <p>Click a track to play it. It moves on to the next one when it ends.</p>
+      <div class="tracks" id="track-list"></div>
+    </div>
+  </div>
+
+  <div class="credit">layout by <a href="https://teppyslayouts.neocities.org/">teppy</a></div>
+</div>
+
+<div class="theme-switch">
+  <button class="ember" data-set-theme="ember">ember</button>
+  <button class="moss" data-set-theme="moss">moss</button>
+</div>
+<script src="../site.js"></script>
+</body>
+</html>
