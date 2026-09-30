@@ -23,6 +23,7 @@
   --scroll-track:  #0D0B0C;
   --window-filter: grayscale(1) sepia(1) hue-rotate(-40deg) saturate(3.5) brightness(.55);
   --moss-filter:   hue-rotate(-100deg) saturate(1.3) brightness(.55);
+  --banner-filter: sepia(.55) hue-rotate(-35deg) saturate(1.6) brightness(.72) contrast(1.05);
   --win-frame:     #24171A;
   --win-edge:      #D90429;
   --win-shadow:    #6D1020;
@@ -56,6 +57,7 @@
   --scroll-track:  #3f5429;
   --window-filter: none;
   --moss-filter:   none;
+  --banner-filter: none;
   --win-frame:     #cddcaa;
   --win-edge:      #6f9a3e;
   --win-shadow:    #3f5429;
@@ -95,29 +97,25 @@ a:hover { color: var(--link-hover); }
 .layout .wrapper { margin: 0; }
 .side { display: flex; flex-direction: column; gap: 22px; padding-top: 313px; }
 
-.header { position: relative; width: 889px; height: 165px; }
-.character { z-index: 10; position: absolute; right: -14px; top: -3px; pointer-events: none; }
-.window-frame, .window-left, .window-right, .outside { filter: var(--window-filter); }
-.window-frame {
-  background-image: url('img/window-frame.png');
-  background-size: contain; background-repeat: no-repeat;
-  width: 889px; height: 165px; position: absolute; top: 0; left: 0;
-  z-index: 1; pointer-events: none;
+.header {
+  position: relative; width: 889px; height: 165px; box-sizing: border-box;
+  border: 2px solid var(--win-edge); border-radius: 8px;
+  box-shadow: 4px 4px 0 var(--win-shadow);
 }
-.window-left {
-  background-image: url('img/window-left.png');
-  background-size: contain; background-repeat: no-repeat;
-  width: 444px; height: 147px; position: absolute; top: 0; left: 0;
+.header::after {
+  content: ""; position: absolute; inset: -16px; z-index: 2; pointer-events: none;
+  border-radius: 22px;
+  background:
+    url('images/accessories/moss-top.png')    -200px 0   / auto 30px repeat-x,
+    url('images/accessories/moss-bottom.png') -500px 100% / auto 30px repeat-x,
+    url('images/accessories/moss-left.png')   0 -300px   / 30px auto repeat-y,
+    url('images/accessories/moss-right.png')  100% -700px / 30px auto repeat-y;
+  filter: var(--moss-filter);
 }
-.window-right {
-  background-image: url('img/window-right.png');
-  background-size: contain; background-repeat: no-repeat;
-  width: 444px; height: 147px; position: absolute; top: 0; right: 0;
-}
-.outside {
-  background-image: url('img/window-background.png');
-  background-repeat: no-repeat;
-  position: absolute; z-index: -5; top: 10px; left: 10px; right: 10px; bottom: 10px;
+.banner {
+  position: absolute; inset: 0; border-radius: 6px;
+  background: url('images/banner.jpg') center 58% / cover no-repeat;
+  filter: var(--banner-filter);
 }
 
 .site-title { letter-spacing: 2px; margin-top: 48px; font-size: 13px; font-weight: bold; }
@@ -127,6 +125,28 @@ a:hover { color: var(--link-hover); }
 .menu { text-transform: lowercase; margin-top: 24px; margin-left: 6px; z-index: 5; position: relative; }
 .menu ul { margin: 0; padding: 0; }
 .menu li { display: inline-block; margin-right: 4px; position: relative; }
+.menu li::before {
+  content: ""; position: absolute; z-index: 2; left: -3px; right: -3px; top: -9px; height: 22px;
+  background: url('images/accessories/moss-top.png') 0 0 / auto 22px repeat-x;
+  -webkit-mask: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+  mask: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+  filter: var(--moss-filter); pointer-events: none;
+}
+.menu li::after {
+  content: ""; position: absolute; z-index: 2; left: -6px; right: 2px; top: 2px; bottom: 0;
+  background:
+    url('images/accessories/moss-left.png')  0 0 / 14px auto repeat-y,
+    url('images/accessories/moss-right.png') 100% -400px / 14px auto repeat-y;
+  -webkit-mask: linear-gradient(to bottom, #000 55%, transparent);
+  mask: linear-gradient(to bottom, #000 55%, transparent);
+  filter: var(--moss-filter); pointer-events: none;
+}
+.menu li:nth-child(2)::after { background-position: 0 -250px, 100% -650px; }
+.menu li:nth-child(3)::after { background-position: 0 -500px, 100% -900px; }
+.menu li:nth-child(4)::after { background-position: 0 -750px, 100% -150px; }
+.menu li:nth-child(2)::before { background-position: -310px 0; }
+.menu li:nth-child(3)::before { background-position: -620px 0; }
+.menu li:nth-child(4)::before { background-position: -900px 0; }
 .menu a {
   text-decoration: none;
   width: 128px; height: 39px; line-height: 42px; text-align: center;
@@ -159,6 +179,14 @@ ul.checklist { padding: 0 1rem; margin: 0; margin-bottom: 2rem; }
 
 .moss-frame {
   position: absolute; inset: -32px; z-index: 3; pointer-events: none;
+  border-radius: 48px;
+  -webkit-mask:
+    linear-gradient(#000, #000) 0 0 / 100% 100% no-repeat,
+    linear-gradient(to right, transparent, #000 22px, #000 calc(100% - 34px), transparent) 30px 0 / 560px 70px no-repeat;
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000, #000) 0 0 / 100% 100% no-repeat exclude,
+    linear-gradient(to right, transparent, #000 22px, #000 calc(100% - 34px), transparent) 30px 0 / 560px 70px no-repeat;
   background:
     url('images/accessories/moss-top.png')    top left    / auto 64px repeat-x,
     url('images/accessories/moss-bottom.png') bottom left / auto 64px repeat-x,
@@ -221,6 +249,22 @@ html, body { scrollbar-width: thin; scrollbar-color: var(--scroll-thumb) var(--s
   padding: 5px;
   box-shadow: 4px 4px 0 var(--win-shadow);
 }
+.win { position: relative; }
+.win::after {
+  content: ""; position: absolute; inset: -11px; z-index: 2; pointer-events: none;
+  border-radius: 14px;
+  background:
+    url('images/accessories/moss-top.png')    var(--mx, 0) 0    / auto 20px repeat-x,
+    url('images/accessories/moss-bottom.png') var(--mx, 0) 100% / auto 20px repeat-x,
+    url('images/accessories/moss-left.png')   0 var(--my, 0)    / 20px auto repeat-y,
+    url('images/accessories/moss-right.png')  100% var(--my, 0) / 20px auto repeat-y;
+  filter: var(--moss-filter);
+}
+.win:nth-child(2) { --mx: -380px; --my: -420px; }
+.win:nth-child(3) { --mx: -760px; --my: -840px; }
+.side-right .win:nth-child(1) { --mx: -190px; --my: -210px; }
+.side-right .win:nth-child(2) { --mx: -570px; --my: -630px; }
+.side-right .win:nth-child(3) { --mx: -950px; --my: -1000px; }
 .win.closed { display: none; }
 .win-bar {
   display: flex; align-items: center; justify-content: space-between; gap: 6px;
