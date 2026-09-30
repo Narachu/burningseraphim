@@ -152,69 +152,77 @@ var PHOTOS = [
     });
   }
 
-  var rand = document.getElementById("random-photo");
-  if (rand && PHOTOS.length) {
-    var img = el("img");
-    img.alt = "random photo";
-    var link = el("a");
-    link.href = root + "html/photo_album.html";
-    link.appendChild(img);
-    var reroll = el("button", "reroll", "reroll");
-    reroll.type = "button";
-    rand.append(link, reroll);
-    var last = -1;
-    function pick() {
-      var i;
-      do { i = Math.floor(Math.random() * PHOTOS.length); } while (i === last && PHOTOS.length > 1);
-      last = i;
-      img.src = photoThumb(PHOTOS[i]);
+  function initPhotos() {
+    var rand = document.getElementById("random-photo");
+    if (rand && PHOTOS.length) {
+      var img = el("img");
+      img.alt = "random photo";
+      var link = el("a");
+      link.href = root + "html/photo_album.html";
+      link.appendChild(img);
+      var reroll = el("button", "reroll", "reroll");
+      reroll.type = "button";
+      rand.append(link, reroll);
+      var last = -1;
+      function pick() {
+        var i;
+        do { i = Math.floor(Math.random() * PHOTOS.length); } while (i === last && PHOTOS.length > 1);
+        last = i;
+        img.src = photoThumb(PHOTOS[i]);
+      }
+      reroll.addEventListener("click", pick);
+      pick();
     }
-    reroll.addEventListener("click", pick);
-    pick();
+
+    var gallery = document.getElementById("gallery");
+    if (gallery) {
+      var box = el("div", "lightbox");
+      var big = el("img");
+      var cap = el("div", "lb-cap");
+      var lbPrev = el("button", "lb-btn lb-prev", "‹");
+      var lbNext = el("button", "lb-btn lb-next", "›");
+      var lbClose = el("button", "lb-btn lb-close", "×");
+      [lbPrev, lbNext, lbClose].forEach(function (b) { b.type = "button"; });
+      box.append(big, cap, lbPrev, lbNext, lbClose);
+      document.body.appendChild(box);
+      var at = 0;
+      function show(i) {
+        at = (i + PHOTOS.length) % PHOTOS.length;
+        big.src = photoFull(PHOTOS[at]);
+        cap.textContent = (at + 1) + " / " + PHOTOS.length;
+        box.classList.add("open");
+      }
+      function hide() { box.classList.remove("open"); big.removeAttribute("src"); }
+      PHOTOS.forEach(function (name, i) {
+        var b = el("button", "thumb");
+        b.type = "button";
+        var t = el("img");
+        t.src = photoThumb(name);
+        t.alt = "photo " + (i + 1);
+        t.loading = "lazy";
+        b.style.setProperty("--r", [-3, 2, -1.5, 3, -2.5, 1.5, -1, 2.5][i % 8] + "deg");
+        b.appendChild(t);
+        b.addEventListener("click", function () { show(i); });
+        gallery.appendChild(b);
+      });
+      lbPrev.addEventListener("click", function (e) { e.stopPropagation(); show(at - 1); });
+      lbNext.addEventListener("click", function (e) { e.stopPropagation(); show(at + 1); });
+      lbClose.addEventListener("click", hide);
+      box.addEventListener("click", function (e) { if (e.target === box) hide(); });
+      document.addEventListener("keydown", function (e) {
+        if (!box.classList.contains("open")) return;
+        if (e.key === "Escape") hide();
+        if (e.key === "ArrowLeft") show(at - 1);
+        if (e.key === "ArrowRight") show(at + 1);
+      });
+    }
   }
 
-  var gallery = document.getElementById("gallery");
-  if (gallery) {
-    var box = el("div", "lightbox");
-    var big = el("img");
-    var cap = el("div", "lb-cap");
-    var lbPrev = el("button", "lb-btn lb-prev", "‹");
-    var lbNext = el("button", "lb-btn lb-next", "›");
-    var lbClose = el("button", "lb-btn lb-close", "×");
-    [lbPrev, lbNext, lbClose].forEach(function (b) { b.type = "button"; });
-    box.append(big, cap, lbPrev, lbNext, lbClose);
-    document.body.appendChild(box);
-    var at = 0;
-    function show(i) {
-      at = (i + PHOTOS.length) % PHOTOS.length;
-      big.src = photoFull(PHOTOS[at]);
-      cap.textContent = (at + 1) + " / " + PHOTOS.length;
-      box.classList.add("open");
-    }
-    function hide() { box.classList.remove("open"); big.removeAttribute("src"); }
-    PHOTOS.forEach(function (name, i) {
-      var b = el("button", "thumb");
-      b.type = "button";
-      var t = el("img");
-      t.src = photoThumb(name);
-      t.alt = "photo " + (i + 1);
-      t.loading = "lazy";
-      b.style.setProperty("--r", [-3, 2, -1.5, 3, -2.5, 1.5, -1, 2.5][i % 8] + "deg");
-      b.appendChild(t);
-      b.addEventListener("click", function () { show(i); });
-      gallery.appendChild(b);
-    });
-    lbPrev.addEventListener("click", function (e) { e.stopPropagation(); show(at - 1); });
-    lbNext.addEventListener("click", function (e) { e.stopPropagation(); show(at + 1); });
-    lbClose.addEventListener("click", hide);
-    box.addEventListener("click", function (e) { if (e.target === box) hide(); });
-    document.addEventListener("keydown", function (e) {
-      if (!box.classList.contains("open")) return;
-      if (e.key === "Escape") hide();
-      if (e.key === "ArrowLeft") show(at - 1);
-      if (e.key === "ArrowRight") show(at + 1);
-    });
-  }
+  fetch(root + "images/library/photos.json", { cache: "no-cache" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (list) { if (Array.isArray(list) && list.length) PHOTOS = list; })
+    .catch(function () {})
+    .then(initPhotos);
 
   document.querySelectorAll("[data-copy]").forEach(function (b) {
     b.addEventListener("click", function () {
