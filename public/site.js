@@ -198,6 +198,7 @@ var PHOTOS = [
       t.src = photoThumb(name);
       t.alt = "photo " + (i + 1);
       t.loading = "lazy";
+      b.style.setProperty("--r", [-3, 2, -1.5, 3, -2.5, 1.5, -1, 2.5][i % 8] + "deg");
       b.appendChild(t);
       b.addEventListener("click", function () { show(i); });
       gallery.appendChild(b);
