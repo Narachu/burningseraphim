@@ -226,3 +226,17 @@ var PHOTOS = [
     });
   });
 })();
+
+(function () {
+  var root = document.documentElement;
+  var btn = document.querySelector("[data-cycle-bg]");
+  if (!btn) return;
+  function label() { btn.textContent = root.dataset.bg ? "bg " + root.dataset.bg : "no bg"; }
+  btn.addEventListener("click", function () {
+    var n = (parseInt(root.dataset.bg || "0", 10) + 1) % 4;
+    if (n) root.dataset.bg = String(n); else delete root.dataset.bg;
+    try { localStorage.setItem("bg", String(n)); } catch (e) {}
+    label();
+  });
+  label();
+})();

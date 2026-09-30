@@ -474,3 +474,12 @@ html, body { scrollbar-width: thin; scrollbar-color: var(--scroll-thumb) var(--s
 .win-body.rows .row b { display: block; font-size: 10px; letter-spacing: 1px; text-transform: lowercase; }
 .np-artist { color: var(--muted); margin: -4px 0 6px; }
 .np-state { font-size: 10px; color: var(--label); }
+
+html { background: var(--bg-img, none) center / cover no-repeat fixed, var(--page-bg); }
+:root[data-bg="1"] { --bg-img: url('images/backgrounds/background1-ember.jpg'); }
+:root[data-theme="moss"][data-bg="1"] { --bg-img: url('images/backgrounds/background1-moss.jpg'); }
+:root[data-bg="2"] { --bg-img: url('images/backgrounds/background2-ember.jpg'); }
+:root[data-theme="moss"][data-bg="2"] { --bg-img: url('images/backgrounds/background2-moss.jpg'); }
+:root[data-bg="3"] { --bg-img: url('images/backgrounds/background3-ember.jpg'); }
+:root[data-theme="moss"][data-bg="3"] { --bg-img: url('images/backgrounds/background3-moss.jpg'); }
+.theme-switch .bg { background: var(--btn-bg); color: var(--btn-text); }
