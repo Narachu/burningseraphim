@@ -10,8 +10,8 @@ var TRACKS = [
 var PHOTOS = [
   "library1.png", "library2.png", "library3.jpg", "library4.jpg", "library5.jpg",
   "library6.webp", "library7.png", "library8.png", "library9.png", "library10.png",
-  "library11.png", "library12.gif", "library13.png", "library15.png", "library16.png",
-  "library17.jpg", "library18.webp", "library19.png", "library20.png", "library21.png",
+  "library11.png", "library12.gif", "library13.png", "library15.png", 
+  "library18.webp", "library20.png", "library21.png",
   "library22.webp", "library23.jpg"
 ];
 
