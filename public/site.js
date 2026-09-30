@@ -44,7 +44,7 @@ var PHOTOS = [
     try { localStorage.setItem("theme", name); } catch (e) {}
   }
   themeButtons.forEach(function (b) { b.addEventListener("click", function () { applyTheme(b.dataset.setTheme); }); });
-  applyTheme(html.dataset.theme || "ember");
+  applyTheme(html.dataset.theme || "moss");
 
   document.querySelectorAll(".win").forEach(function (win) {
     var bar = win.querySelector(".win-bar");
